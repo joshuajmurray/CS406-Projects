@@ -1,20 +1,21 @@
 package com.hfad.messenger;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
+import android.app.Activity;
 import android.content.Intent;
+import android.widget.TextView;
 
 public class ReceiveMessageActivity extends Activity {
+
+    protected static final String EXTRA_MESSAGE = "message";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_message);
-    }
-    //call onSendMeaage() when button is clicked
-    public void onSendMessage(View view){
-        Intent intent = new Intent(this, ReceiveMessageActivity.class);
-        startActivity(intent);
+        Intent intent = getIntent();
+        String messageText = intent.getStringExtra(EXTRA_MESSAGE);
+        TextView messageView = (TextView)findViewById(R.id.message);
+        messageView.setText(messageText);
     }
 }
