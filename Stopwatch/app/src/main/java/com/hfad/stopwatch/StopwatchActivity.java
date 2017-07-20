@@ -26,6 +26,21 @@ public class StopwatchActivity extends Activity {
         runTimer();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        wasRunning = running;
+        running = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(wasRunning) {
+            running = true;
+        }
+    }
+
     //start the stopwatch
     public void onClickStart(View view) {
         running = true;
@@ -70,7 +85,7 @@ public class StopwatchActivity extends Activity {
         savedInstanceState.putBoolean("running", running);
         savedInstanceState.putBoolean("wasRunning", wasRunning);
     }
-
+/* removed for onPause/Resume
     @Override
     protected void onStop() {
         super.onStop();
@@ -85,4 +100,5 @@ public class StopwatchActivity extends Activity {
             running = true;
         }
     }
+*/
 }
