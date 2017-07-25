@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 public class WorkoutDetailFragment extends Fragment {
 
- //   public WorkoutDetailFragment() {
-        // Required empty public constructor
- //   }
     private long workoutId;
 
     @Override
