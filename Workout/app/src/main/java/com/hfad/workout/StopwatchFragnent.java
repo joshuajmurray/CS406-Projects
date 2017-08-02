@@ -8,8 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Button;
 
-public class StopwatchFragnent extends Fragment {
+public class StopwatchFragnent extends Fragment implements View.OnClickListener {
     //Number of seconds diplayed on the stopwatch.
     private int seconds = 0;
     //Is the the stopwatch running?
@@ -34,6 +35,12 @@ public class StopwatchFragnent extends Fragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_stopwatch, container, false);
         runTimer(layout);
+        Button startButton = (Button) layout.findViewById(R.id.start_button);
+        startButton.setOnClickListener(this);
+        Button stopButton = (Button) layout.findViewById(R.id.stop_button);
+        stopButton.setOnClickListener(this);
+        Button resetButton = (Button) layout.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(this);
         return layout;
     }
 
@@ -59,7 +66,22 @@ public class StopwatchFragnent extends Fragment {
         savedInstanceState.putBoolean("wasRunning", wasRunning);
     }
 
-    public void onClickState(View view) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.start_button:
+                onClickStart(v);
+                break;
+            case R.id.stop_button:
+                onClickStop(v);
+                break;
+            case R.id.reset_button:
+                onCLickReset(v);
+                break;
+        }
+    }
+
+    public void onClickStart(View view) {
         running = true;
     }
 
@@ -83,12 +105,12 @@ public class StopwatchFragnent extends Fragment {
                 int secs = seconds % 60;
                 String time = String.format("%d:%02d:%02d",
                         hours, minutes, secs);
-                timeView.setText(time)
+                timeView.setText(time);
                 if(running); {
                     seconds++;
                 }
                 handler.postDelayed(this, 1000);
             }
-        })
+        });
     }
 }

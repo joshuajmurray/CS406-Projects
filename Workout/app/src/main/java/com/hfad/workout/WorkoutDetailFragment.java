@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.app.FragmentTransaction;
 
 public class WorkoutDetailFragment extends Fragment {
 
@@ -17,6 +18,13 @@ public class WorkoutDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             workoutId = savedInstanceState.getLong("workoutId");
+        } else {
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+            StopwatchFragnent stopwatchFragnent = new StopwatchFragnent();
+            ft.replace(R.id.stopwatch_container, stopwatchFragnent);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
         }
     }
 
