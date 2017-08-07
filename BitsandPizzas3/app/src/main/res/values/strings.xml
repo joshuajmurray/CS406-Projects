@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Bits and Pizzas</string>
+    <string name="create_order">Create Order</string>
+    <string name="create_order_title">Create Order</string>
+    <string name="action_share">Share</string>
+    <string name="hello_world">Hello World</string>
+    <string name="title_activity_order">Activity Order</string>
+</resources>
