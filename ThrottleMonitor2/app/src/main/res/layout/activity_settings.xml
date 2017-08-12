@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hfad.throttlemonitor.SettingsActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/settings"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/valDuration"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignTop="@+id/duration"
+        android:layout_marginStart="139dp"
+        android:text="--"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/duration"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginEnd="10dp" />
+
+    <TextView
+        android:id="@+id/valDelay"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/textView"
+        android:layout_alignTop="@+id/delay"
+        android:layout_marginStart="139dp"
+        android:text="--"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/delay"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/valDuration"
+        android:layout_alignStart="@+id/duration" />
+
+    <CheckBox
+        android:id="@+id/clutch_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/delay"
+        android:layout_below="@+id/delay"
+        android:layout_marginTop="25dp"
+        android:text="clutch_type (check for normally closed)" />
+
+    <CheckBox
+        android:id="@+id/brake_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="brake_type (check for normally closed)"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/clutch_type"
+        android:layout_alignStart="@+id/clutch_type" />
+
+    <TextView
+        android:id="@+id/durName"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/valDuration"
+        android:layout_alignBottom="@+id/valDuration"
+        android:layout_toEndOf="@+id/valDuration"
+        android:text="Duration"
+        android:textAlignment="textStart"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/delName"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_alignBaseline="@+id/valDelay"
+        android:layout_alignBottom="@+id/valDelay"
+        android:layout_toEndOf="@+id/valDelay"
+        android:text="Delay"
+        android:textAlignment="textStart"
+        android:textIsSelectable="false"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/brake_type"
+        android:layout_below="@+id/brake_type"
+        android:layout_marginTop="27dp"
+        android:text="@string/update"
+        android:textAlignment="center"
+        android:textIsSelectable="false"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="380dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arcflash_backgroud" />
+
+</RelativeLayout>
