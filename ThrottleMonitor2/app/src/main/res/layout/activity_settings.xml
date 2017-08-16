@@ -107,6 +107,7 @@
         android:layout_below="@+id/brake_type"
         android:layout_marginTop="27dp"
         android:text="@string/update"
+        android:onClick="update"
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:textSize="15dp"
@@ -120,5 +121,73 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:src="@drawable/arcflash_backgroud" />
+
+    <ImageView
+        android:id="@+id/clutchStatus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/imageView"
+        android:layout_toStartOf="@+id/delName"
+        android:src="@drawable/red_led_on" />
+
+    <ImageView
+        android:id="@+id/brakeStatus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/clutchStatus"
+        android:layout_toStartOf="@+id/delName"
+        android:src="@drawable/red_led_on" />
+
+    <ImageView
+        android:id="@+id/blipStatus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/brakeStatus"
+        android:layout_toStartOf="@+id/delName"
+        android:src="@drawable/red_led_on" />
+
+    <TextView
+        android:id="@+id/clutch_stat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clutch"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/brake_type" />
+
+    <TextView
+        android:id="@+id/brake_stat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brake"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/clutchStatus"
+        android:layout_alignEnd="@+id/brake_type" />
+
+    <TextView
+        android:id="@+id/blip_stat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blip"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/brakeStatus"
+        android:layout_alignEnd="@+id/brake_type" />
+
+    <TextView
+        android:id="@+id/statusDisplay"
+        android:layout_width="200dp"
+        android:layout_height="85dp"
+        android:background="@drawable/back"
+        android:text="Stuff goes here"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/update" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/statusDisplay"
+        android:layout_alignStart="@+id/statusDisplay"
+        android:text="Status" />
 
 </RelativeLayout>

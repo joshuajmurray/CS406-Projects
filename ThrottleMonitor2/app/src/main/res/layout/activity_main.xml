@@ -9,6 +9,15 @@
     android:fitsSystemWindows="true"
     tools:context="com.hfad.throttlemonitor.MainActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/connect"
+        android:layout_centerHorizontal="true"
+        android:text="Throttle Blipper"
+        android:textSize="30sp"/>
+
     <Button
         android:id="@+id/menu"
         android:layout_width="wrap_content"
