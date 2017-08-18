@@ -178,9 +178,11 @@
         android:layout_width="200dp"
         android:layout_height="85dp"
         android:background="@drawable/back"
-        android:text="Stuff goes here"
+        android:text=""
         android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/update" />
+        android:layout_alignStart="@+id/update"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp" />
 
     <TextView
         android:id="@+id/status_text"

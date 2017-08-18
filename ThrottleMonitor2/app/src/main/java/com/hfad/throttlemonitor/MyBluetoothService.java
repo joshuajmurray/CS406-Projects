@@ -1,6 +1,9 @@
 package com.hfad.throttlemonitor;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
+import android.bluetooth.BluetoothDevice;
+
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.util.Log;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 public class MyBluetoothService {
     private static final String TAG = "MY_APP_DEBUG_TAG";
@@ -27,7 +31,46 @@ public class MyBluetoothService {
         private  BluetoothSocket mmSocket;
         private  InputStream mmInStream;
         private  OutputStream mmOutStream;
+        private BluetoothDevice mmDevice;
         private byte[] mmBuffer; // mmBuffer store for the stream
+        private BluetoothAdapter myBluetoothAdapter;
+
+        public void ConnectThread(String MAC, UUID MY_UUID) {
+            // Use a temporary object that is later assigned to mmSocket
+            // because mmSocket is final.
+            BluetoothDevice device = myBluetoothAdapter.getRemoteDevice(MAC);
+
+            BluetoothSocket tmp = null;
+            mmDevice = device;
+
+            try {
+                // Get a BluetoothSocket to connect with the given BluetoothDevice.
+                // MY_UUID is the app's UUID string, also used in the server code.
+                tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
+            } catch (IOException e) {
+                Log.e(TAG, "Socket's create() method failed", e);
+            }
+            mmSocket = tmp;
+        }
+
+        public void sockConnect() {
+            // Cancel discovery because it otherwise slows down the connection.
+            myBluetoothAdapter.cancelDiscovery();
+
+            try {
+                // Connect to the remote device through the socket. This call blocks
+                // until it succeeds or throws an exception.
+                mmSocket.connect();
+            } catch (IOException connectException) {
+                // Unable to connect; close the socket and return.
+                try {
+                    mmSocket.close();
+                } catch (IOException closeException) {
+                    Log.e(TAG, "Could not close the client socket", closeException);
+                }
+                return;
+            }
+        }
 
         public void ConnectedThread(BluetoothSocket socket) {
             mmSocket = socket;
